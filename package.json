@@ -1,0 +1,34 @@
+{
+  "name": "dev-util-cli",
+  "version": "0.0.1",
+  "description": "Command line interface to dev-util",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lvendrame/dev-util-cli.git"
+  },
+  "preferGlobal": true,
+  "bin": {
+    "dev-util": "./bin/index.js"
+  },
+  "keywords": [
+    "cli",
+    "dev-util",
+    "cpf",
+    "cnpj",
+    "credit-card"
+  ],
+  "author": "Luis Fernando Vendrame <lvendrame@gmail.com> (http://www.lvendrame.com)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/lvendrame/dev-util-cli/issues"
+  },
+  "homepage": "https://github.com/lvendrame/dev-util-cli#readme",
+  "dependencies": {
+    "commander": "^2.8.1",
+    "dev-util": "0.0.1"
+  }
+}
