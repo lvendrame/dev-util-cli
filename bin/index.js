@@ -3,7 +3,7 @@
 var cpf = require('dev-util/docs/pt-br/cpf');
 var cnpj = require('dev-util/docs/pt-br/cnpj');
 var cli = require('./cli');
-//console.log(devUtil.generate());
+var copyPaste = require("copy-paste");
 
 if(cli.validate){
 	validate();
@@ -14,41 +14,52 @@ if(cli.validate){
 
 
 function generate(){
-	switch(cli.doc){
-		case 'CPF':
-		case 'cpf':
-			generateCPF();
-			break;
-		case 'CNPJ':
-		case 'cnpj':
-			generateCNPJ();
-			break;
-	}
+    generateDoc(getDocFunction());
 }
 
-function generateCPF(){
+function generateDoc(func){
 	var i = 0,
-		len = getQuantity();
+		len = getQuantity(),
+        str = [],
+        tmp;
 	for(;i< len;i++){
-		console.log(cli.mask?cpf.generateWithMask():cpf.generate());
+        tmp = cli.mask?func.generateWithMask():func.generate();
+		console.log(tmp);
+        str.push(tmp);
 	}
-}
-
-function generateCNPJ(){
-	var i = 0,
-		len = getQuantity();
-	for(;i< len;i++){
-		console.log(cli.mask?cnpj.generateWithMask():cnpj.generate());
-	}
+    
+    if(cli.clipboard){
+        copyPaste.copy(str.join("\r\n"));
+        console.log("all text was copied to the clipboard");
+    }
 }
 
 function validate(){
-	console.log('ainda não implentado.')
+    validateDoc(getDocFunction());
+}
+
+function validateDoc(func){
+    console.log(func.validate(cli.validate) ?
+                'Valid document' :
+                'Invalid document');
 }
 
 function getQuantity(){
 	if(cli.quantity){
 		return cli.quantity;
 	}
-	return 0;
+	return 1;
+}
+
+function getDocFunction(){
+	switch(cli.doc){
+		case 'CPF':
+		case 'cpf':
+			return cpf;
+		case 'CNPJ':
+		case 'cnpj':
+			return cnpj;
+        default:
+            return new Function();
+	}
 }
