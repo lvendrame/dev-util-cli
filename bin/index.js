@@ -52,14 +52,13 @@ function getQuantity(){
 }
 
 function getDocFunction(){
-	switch(cli.doc){
-		case 'CPF':
-		case 'cpf':
-			return cpf;
-		case 'CNPJ':
-		case 'cnpj':
-			return cnpj;
-        default:
-            return new Function();
+	if(cli.cpf){
+		return cpf;
+	}else if(cli.cnpj){
+		return cnpj;
+	}else{
+		return new function(){
+			console.log('ERROR: Select an type');
+		};
 	}
 }
