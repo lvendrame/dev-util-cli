@@ -2,8 +2,10 @@
 
 var cpf = require('dev-util/docs/pt-br/cpf');
 var cnpj = require('dev-util/docs/pt-br/cnpj');
+var creditCard = require('dev-util/docs/creditCard');
 var cli = require('./cli');
 var copyPaste = require("copy-paste");
+var cliParam = undefined;
 
 if(cli.validate){
 	validate();
@@ -23,7 +25,7 @@ function generateDoc(func){
         str = [],
         tmp;
 	for(;i< len;i++){
-        tmp = cli.mask?func.generateWithMask():func.generate();
+        tmp = cli.mask?func.generateWithMask(cliParam):func.generate(cliParam);
 		console.log(tmp);
         str.push(tmp);
 	}
@@ -56,6 +58,9 @@ function getDocFunction(){
 		return cpf;
 	}else if(cli.cnpj){
 		return cnpj;
+	}else if(cli.creditCard){
+        cliParam = cli.creditCard;
+		return creditCard;
 	}else{
 		return new function(){
 			console.log('ERROR: Select an type');
