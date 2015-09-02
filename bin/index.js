@@ -7,16 +7,23 @@ var cli = require('./cli');
 var copyPaste = require("copy-paste");
 var cliParam = undefined;
 
-if(cli.validate){
-	validate();
-}else{
-	generate();
+execute();
+
+function execute() {
+	if(cli.validate){
+		validate();
+	}else{
+		generate();
+	}
 }
 
-
-
 function generate(){
-    generateDoc(getDocFunction());
+		var docFunc = getDocFunction();
+		if(docFunc){
+				generateDoc(docFunc);
+		}else{
+			console.log('  error: Select an document type');
+		}
 }
 
 function generateDoc(func){
@@ -29,7 +36,7 @@ function generateDoc(func){
 		console.log(tmp);
         str.push(tmp);
 	}
-    
+
     if(cli.clipboard){
         copyPaste.copy(str.join("\r\n"));
         console.log("all text was copied to the clipboard");
@@ -61,9 +68,5 @@ function getDocFunction(){
 	}else if(cli.creditCard){
         cliParam = cli.creditCard;
 		return creditCard;
-	}else{
-		return new function(){
-			console.log('ERROR: Select an type');
-		};
 	}
 }

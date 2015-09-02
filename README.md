@@ -39,11 +39,11 @@ Select Credit Card.
 
 Types: maestro, dinersclub, laser, jcb, unionpay, discover, mastercard, amex, visa
 
-### -q, -quantity &lt;number&gt;:
+### -q, --quantity &lt;number&gt;:
 Quantity of generate data.
 
-### -m, -mask:
+### -m, --mask:
 Generate data with default mask.
 
-### -C, -clipboard:
+### -C, --clipboard:
 Copy all generated data to clipboard.
