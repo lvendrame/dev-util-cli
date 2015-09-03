@@ -4,7 +4,7 @@ var cpf = require('dev-util/docs/pt-br/cpf');
 var cnpj = require('dev-util/docs/pt-br/cnpj');
 var creditCard = require('dev-util/docs/creditCard');
 var cli = require('./cli');
-var copyPaste = require("copy-paste");
+var copyPaste = require('copy-paste');
 var cliParam;
 
 execute();
@@ -38,8 +38,8 @@ function generateDoc(func){
     }
 
     if(cli.clipboard){
-        copyPaste.copy(str.join("\r\n"));
-        console.log("all text was copied to the clipboard");
+        copyPaste.copy(str.join('\r\n'));
+        console.log('all text was copied to the clipboard');
     }
 }
 
