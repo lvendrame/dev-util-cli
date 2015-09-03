@@ -5,7 +5,7 @@ var cnpj = require('dev-util/docs/pt-br/cnpj');
 var creditCard = require('dev-util/docs/creditCard');
 var cli = require('./cli');
 var copyPaste = require("copy-paste");
-var cliParam = undefined;
+var cliParam;
 
 execute();
 
@@ -31,8 +31,8 @@ function generateDoc(func){
     len = getQuantity(),
     str = [],
     tmp;
-    for(;i< len;i++){
-        tmp = cli.mask?func.generateWithMask(cliParam):func.generate(cliParam);
+    for(; i < len; i++){
+        tmp = cli.mask ? func.generateWithMask(cliParam) : func.generate(cliParam);
         console.log(tmp);
         str.push(tmp);
     }
