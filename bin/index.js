@@ -10,32 +10,32 @@ var cliParam = undefined;
 execute();
 
 function execute() {
-	if(cli.validate){
-		validate();
-	}else{
-		generate();
-	}
+    if(cli.validate){
+        validate();
+    }else{
+        generate();
+    }
 }
 
 function generate(){
-		var docFunc = getDocFunction();
-		if(docFunc){
-				generateDoc(docFunc);
-		}else{
-			console.log('  error: Select an document type');
-		}
+    var docFunc = getDocFunction();
+    if(docFunc){
+        generateDoc(docFunc);
+    }else{
+        console.log('  error: Select an document type');
+    }
 }
 
 function generateDoc(func){
-	var i = 0,
-		len = getQuantity(),
-        str = [],
-        tmp;
-	for(;i< len;i++){
+    var i = 0,
+    len = getQuantity(),
+    str = [],
+    tmp;
+    for(;i< len;i++){
         tmp = cli.mask?func.generateWithMask(cliParam):func.generate(cliParam);
-		console.log(tmp);
+        console.log(tmp);
         str.push(tmp);
-	}
+    }
 
     if(cli.clipboard){
         copyPaste.copy(str.join("\r\n"));
@@ -54,19 +54,19 @@ function validateDoc(func){
 }
 
 function getQuantity(){
-	if(cli.quantity){
-		return cli.quantity;
-	}
-	return 1;
+    if(cli.quantity){
+        return cli.quantity;
+    }
+    return 1;
 }
 
 function getDocFunction(){
-	if(cli.cpf){
-		return cpf;
-	}else if(cli.cnpj){
-		return cnpj;
-	}else if(cli.creditCard){
+    if(cli.cpf){
+        return cpf;
+    }else if(cli.cnpj){
+        return cnpj;
+    }else if(cli.creditCard){
         cliParam = cli.creditCard;
-		return creditCard;
-	}
+        return creditCard;
+    }
 }
