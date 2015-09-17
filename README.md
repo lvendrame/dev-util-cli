@@ -1,5 +1,6 @@
-# dev-util-cli
-Command line to dev-util.
+# dev-util-cli [![Build Status](https://travis-ci.org/lagden/dev-util-cli.svg?branch=ups)](https://travis-ci.org/lagden/dev-util-cli)
+
+> Command line to dev-util.
 
 ## Installation
 
@@ -47,3 +48,13 @@ Generate data with default mask.
 
 ### -C, --clipboard:
 Copy all generated data to clipboard.
+
+## Contributors
+
+- [Luís Fernando Vendrame](https://github.com/lvendrame)
+- [Thiago Lagden](https://github.com/lagden)
+
+
+## License
+
+MIT © [Luís Fernando Vendrame](https://github.com/lvendrame)
