@@ -66,8 +66,8 @@ function generateDoc(func) {
 	}
 
 	if (cli.clipboard) {
-		clipboard(str.join('\r\n'), (err) => {
-			if(err) {
+		clipboard(str.join('\r\n'), err => {
+			if (err) {
 				fail('Fail when copy text to the clipboard');
 			} else {
 				success('All text was copied to the clipboard');
