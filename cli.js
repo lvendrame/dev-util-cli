@@ -5,7 +5,7 @@
 const cpf = require('dev-util/docs/pt-br/cpf');
 const cnpj = require('dev-util/docs/pt-br/cnpj');
 const creditCard = require('dev-util/docs/creditCard');
-const copyPaste = require('copy-paste');
+const clipboard = require('to-clipboard');
 const chalk = require('chalk');
 const cli = require('./lib/commander');
 
@@ -66,8 +66,13 @@ function generateDoc(func) {
 	}
 
 	if (cli.clipboard) {
-		copyPaste.copy(str.join('\r\n'));
-		success('All text was copied to the clipboard');
+		clipboard(str.join('\r\n'), (err) => {
+			if(err) {
+				fail('Fail when copy text to the clipboard');
+			} else {
+				success('All text was copied to the clipboard');
+			}
+		});
 	} else {
 		process.exit();
 	}
